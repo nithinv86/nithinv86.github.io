@@ -5,7 +5,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SummaryComponent } from './pages/summary/summary.component';
-import { TopNavComponent } from './top-nav/top-nav.component';
+import { TopNavComponent } from './pages/top-nav/top-nav.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TooltipModule } from 'primeng/tooltip';
 
