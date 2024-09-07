@@ -1,0 +1,40 @@
+<p-menubar
+  [model]="mainNavigation"
+  styleClass="bg-black-alpha-10 border-none border-noround py-1 px-3 transition-ease-in-out"
+>
+  <ng-template pTemplate="start">
+    <a href="/" class="w-3rem h-3rem flex">
+      <img src="assets/images/logo_white.svg" alt="logo" id="logo" class="w-full h-full" />
+    </a>
+  </ng-template>
+  <ng-template pTemplate="item" let-item let-root="root">
+    <a pRipple class="flex align-items-center p-menuitem-link">
+      <span [class]="item.icon"></span>
+      <span class="ml-2">{{ item.label }}</span>
+      <span
+        *ngIf="item.shortcut"
+        class="ml-auto border-1 surface-border border-round surface-100 text-xs p-1"
+      >
+        {{ item.shortcut }}
+      </span>
+      <i
+        *ngIf="item.items"
+        [ngClass]="['pi', root ? 'pi-angle-down ml-2' : 'pi-angle-right ml-auto']"
+      ></i>
+    </a>
+  </ng-template>
+  <ng-template pTemplate="end">
+    <div class="flex align-items-center gap-3">
+      <a
+        *ngFor="let sn of socialNetworks"
+        [href]="sn.url"
+        target="_blank"
+        class="text-white px-2 hover:text-primary"
+        [pTooltip]="sn.label"
+        tooltipPosition="left"
+      >
+        <i [class]="sn.icon"></i>
+      </a>
+    </div>
+  </ng-template>
+</p-menubar>
