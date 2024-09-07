@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
+import { InputTextModule } from 'primeng/inputtext';
+import { MenubarModule } from 'primeng/menubar';
 import { AppComponent } from './app.component';
+import { HomeComponent } from './pages/home/home.component';
+import { SummaryComponent } from './pages/summary/summary.component';
+import { TopNavComponent } from './common/top-nav/top-nav.component';
+import { FooterComponent } from './common/footer/footer.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  declarations: [AppComponent, HomeComponent, SummaryComponent, TopNavComponent, FooterComponent],
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, InputTextModule, MenubarModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
