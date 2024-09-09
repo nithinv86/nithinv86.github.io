@@ -1,0 +1,68 @@
+.orbit {
+  animation: rotate 20s linear infinite;
+
+  .icon {
+    animation: antiRotate 20s linear infinite;
+    transform: translate(-50%, -50%);
+
+    &:nth-child(1) {
+      top: -1.25rem;
+      left: 50%;
+    }
+
+    &:nth-child(2) {
+      top: 10%;
+      right: -1.25rem;
+    }
+
+    &:nth-child(3) {
+      top: 50%;
+      right: -4.25rem;
+    }
+
+    &:nth-child(4) {
+      top: 90%;
+      right: -1.25rem;
+    }
+
+    &:nth-child(5) {
+      bottom: -4.25rem;
+      left: 50%;
+    }
+
+    &:nth-child(6) {
+      top: 90%;
+      left: 1.75rem;
+    }
+
+    &:nth-child(7) {
+      top: 50%;
+      left: -1.25rem;
+    }
+
+    &:nth-child(8) {
+      top: 10%;
+      left: 1.75rem;
+    }
+  }
+}
+
+/* Animation for orbiting */
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Animation for orbiting */
+@keyframes antiRotate {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
