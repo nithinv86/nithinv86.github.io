@@ -1,9 +1,8 @@
 .orbit {
-  animation: rotate 20s linear infinite;
+  animation: rotate 30s linear infinite;
 
   .icon {
-    animation: antiRotate 20s linear infinite;
-    transform: translate(-50%, -50%);
+    animation: antiRotate 30s linear infinite;
 
     &:nth-child(1) {
       top: -1.25rem;
@@ -12,21 +11,21 @@
 
     &:nth-child(2) {
       top: 10%;
-      right: -1.25rem;
+      right: 0.25rem;
     }
 
     &:nth-child(3) {
       top: 50%;
-      right: -4.25rem;
+      right: -2.75rem;
     }
 
     &:nth-child(4) {
       top: 90%;
-      right: -1.25rem;
+      right: 0.25rem;
     }
 
     &:nth-child(5) {
-      bottom: -4.25rem;
+      bottom: -2.75rem;
       left: 50%;
     }
 
@@ -57,7 +56,7 @@
   }
 }
 
-/* Animation for orbiting */
+/* Animation for anti orbiting */
 @keyframes antiRotate {
   0% {
     transform: rotate(360deg);
