@@ -25,6 +25,6 @@ deploy:
   script:
     - apt-get update -qy
     - apt-get install -qy sshpass
-    - sshpass -p "$SSH_PASSWORD" scp -o StrictHostKeyChecking=no -r dist//browser/* $SSH_USER@$SSH_HOST:/path/to/your/webserver
+    - sshpass -p "$SSH_PASSWORD" scp -o StrictHostKeyChecking=no -r dist//browser/* $SSH_USER@$SSH_HOST:/var/www/html
   only:
     - main
