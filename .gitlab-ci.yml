@@ -26,7 +26,7 @@ deploy:
     # Install openssh-client in alpine
     - apk add --no-cache openssh-client
     - eval $(ssh-agent -s)
-    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - echo "$SSH_PASSWORD" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
     - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
