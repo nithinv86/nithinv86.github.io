@@ -16,20 +16,21 @@ build:
   script:
     - npm ci
     - ng build
-    - apt-get update -qy
-    - apt-get install -qy sshpass
-    - sshpass -p "$SSH_PASSWORD" scp -o StrictHostKeyChecking=no -r dist/browser/* $SSH_USER@$SSH_HOST:/var/www/html
   artifacts:
     paths:
       - dist/
-  only:
-    - master
 
 deploy:
   stage: deploy
+  before_script:
+    # Install openssh-client in alpine
+    - apk add --no-cache openssh-client
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
   script:
-    - apt-get update -qy
-    - apt-get install -qy sshpass
-    - sshpass -p "$SSH_PASSWORD" scp -o StrictHostKeyChecking=no -r dist/browser/* $SSH_USER@$SSH_HOST:/var/www/html
+    - scp -r dist/* $SSH_USER@$SSH_HOST:/path/to/your/webserver
   only:
     - master
