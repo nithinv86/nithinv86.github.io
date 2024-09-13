@@ -65,3 +65,40 @@
     transform: rotate(0deg);
   }
 }
+
+@media screen and (max-width: 960px) {
+  $smallScreenHeight: 60vh;
+
+  :host {
+    height: #{$smallScreenHeight * 2} !important;
+
+    > div {
+      height: #{$smallScreenHeight * 2} !important;
+
+      > div {
+        height: $smallScreenHeight !important;
+      }
+    }
+  }
+
+  .orbit {
+    .icon {
+      &:nth-child(1) {
+        top: -0.5rem;
+      }
+
+      &:nth-child(3) {
+        right: -2rem;
+      }
+
+      &:nth-child(5) {
+        bottom: -2rem;
+      }
+
+      &:nth-child(7) {
+        top: 50%;
+        left: -0.5rem;
+      }
+    }
+  }
+}

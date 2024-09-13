@@ -1,21 +1,33 @@
-<div class="w-full h-full flex">
-  <div class="col-6 h-full flex align-items-center justify-content-center">
-    <div class="grid w-24rem gap-4">
+<div class="w-full h-full grid">
+  <div class="col-12 md:col-6 h-full flex align-items-center justify-content-center">
+    <div class="grid w-full max-w-20rem md:max-w-24rem gap-4">
       <span class="w-auto bg-primary px-3 py-2 border-round-xs">Full-stack Developer</span>
-      <span class="col-12 px-0 text-6xl font-lightest">Talk is cheap. <br />Show the code</span>
+      <span class="col-12 px-0 text-4xl md:text-6xl font-lightest"
+        >Talk is cheap. <br />Show the code</span
+      >
       <code class="text-white-alpha-30">
         I design and code beautifully simple things, <br />and I love what I do.
       </code>
       <span class="w-auto text-primary font-bold uppercase">Let's Chat!</span>
     </div>
   </div>
-  <div class="col-6 h-full flex align-items-center justify-content-center">
-    <div class="w-10rem h-10rem relative z-1 p-3">
+  <div class="col-12 md:col-6 h-full flex align-items-center justify-content-center">
+    <div class="w-full h-full max-w-7rem max-h-7rem md:max-w-10rem md:max-h-10rem relative z-1 p-3">
       <img src="assets/images/logo.svg" alt="Nithin V" class="w-full h-full" />
     </div>
-    <div class="orbit w-18rem h-18rem absolute border-circle">
-      <div *ngFor="let skill of skills" [class]="skill.class" [pTooltip]="skill.label">
-        <i [class]="skill.icon"></i>
+    <div
+      class="
+        orbit
+        w-full
+        h-full
+        max-w-11rem max-h-11rem
+        md:max-w-18rem md:max-h-18rem
+        absolute
+        border-circle
+      "
+    >
+      <div *ngFor="let skill of skills" [class]="iconClass" [pTooltip]="skill.label">
+        <i [class]="skill.icon" [style.color]="skill.color"></i>
       </div>
     </div>
   </div>
