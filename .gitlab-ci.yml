@@ -1,0 +1,30 @@
+image: node:18.19.1-alpine3.19
+
+stages:
+  - build
+  - deploy
+
+cache:
+  paths:
+    - node_modules/
+
+before_script:
+  - npm install -g @angular/cli
+
+build:
+  stage: build
+  script:
+    - npm ci
+    - ng build
+  artifacts:
+    paths:
+      - dist/
+
+deploy:
+  stage: deploy
+  script:
+    - apt-get update -qy
+    - apt-get install -qy sshpass
+    - sshpass -p "$SSH_PASSWORD" scp -o StrictHostKeyChecking=no -r dist//browser/* $SSH_USER@$SSH_HOST:/path/to/your/webserver
+  only:
+    - main
