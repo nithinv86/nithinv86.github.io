@@ -1,6 +1,6 @@
 <p-menubar
   [model]="mainNavigation"
-  styleClass="bg-black-alpha-10 border-none border-noround py-1 px-3 transition-ease-in-out"
+  styleClass="bg-menu border-none border-noround py-1 px-3 transition-ease-in-out"
 >
   <ng-template pTemplate="start">
     <a href="/" class="w-3rem h-3rem flex">
@@ -29,12 +29,22 @@
         *ngFor="let sn of socialNetworks"
         [href]="sn.url"
         target="_blank"
-        class="text-white px-2 hover:text-primary"
+        class="text-menu px-2 hover:text-primary"
         [pTooltip]="sn.label"
         tooltipPosition="left"
       >
         <i [class]="sn.icon"></i>
       </a>
+
+      <p-toggleButton
+        onLabel="Light"
+        offLabel="Dark"
+        [onIcon]="'fa-solid fa-sun'"
+        [offIcon]="'fa-solid fa-moon'"
+        styleClass="px-2 py-1"
+        [(ngModel)]="darkMode"
+        (onChange)="toggleDarkMode()"
+      ></p-toggleButton>
     </div>
   </ng-template>
 </p-menubar>

@@ -8,7 +8,13 @@ import { MenuItem } from 'primeng/api';
 })
 export class TopNavComponent implements OnInit {
   public mainNavigation: MenuItem[];
+  public darkMode = true;
   public socialNetworks = [
+    {
+      label: 'Email',
+      icon: 'fa-regular fa-envelope',
+      url: 'mailto:mails2nithin@gmail.com',
+    },
     {
       label: 'LinkedIn',
       icon: 'fa-brands fa-linkedin',
@@ -35,5 +41,15 @@ export class TopNavComponent implements OnInit {
       { label: 'Portfolio' },
       { label: 'Contact' },
     ];
+  }
+
+  public toggleDarkMode(): void {
+    console.log(this.darkMode);
+
+    if (this.darkMode) {
+      document.querySelector('body').setAttribute('data-theme', 'dark');
+    } else {
+      document.querySelector('body').setAttribute('data-theme', 'light');
+    }
   }
 }
