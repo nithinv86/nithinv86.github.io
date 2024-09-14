@@ -1,14 +1,27 @@
-<div class="w-full h-full grid">
+<div class="w-full h-full grid absolute z-1">
   <div class="col-12 md:col-6 h-full flex align-items-center justify-content-center">
     <div class="grid w-full max-w-20rem md:max-w-24rem gap-4">
       <span class="w-auto bg-primary px-3 py-2 border-round-xs">Full-stack Developer</span>
-      <span class="col-12 px-0 text-4xl md:text-6xl font-lightest"
+      <span class="col-12 px-0 text-4xl md:text-6xl font-lightest text-menu"
         >Talk is cheap. <br />Show the code</span
       >
-      <code class="text-white-alpha-30">
+      <code class="text-menu-30">
         I design and code beautifully simple things, <br />and I love what I do.
       </code>
-      <span class="w-auto text-primary font-bold uppercase">Let's Chat!</span>
+      <span
+        class="
+          w-auto
+          text-primary
+          font-bold
+          uppercase
+          cursor-pointer
+          hover:text-white
+          transition-ease-in-out
+        "
+      >
+        Let's Chat!
+        <i class="far fa-comment-dots pl-2"></i>
+      </span>
     </div>
   </div>
   <div class="col-12 md:col-6 h-full flex align-items-center justify-content-center">
@@ -26,9 +39,29 @@
         border-circle
       "
     >
-      <div *ngFor="let skill of skills" [class]="iconClass" [pTooltip]="skill.label">
+      <div
+        *ngFor="let skill of skills"
+        [class]="iconClass"
+        [pTooltip]="skillTooltipContent"
+        [autoHide]="true"
+      >
         <i [class]="skill.icon" [style.color]="skill.color"></i>
+        <ng-template #skillTooltipContent>
+          <div class="flex flex-column align-items-center">
+            <b>{{ skill.label }}</b>
+            <span class="skill-lavel">
+              <p-rating [(ngModel)]="skill.skill" [cancel]="false"></p-rating>
+            </span>
+          </div>
+        </ng-template>
       </div>
     </div>
   </div>
 </div>
+
+<ul class="bg-bubbles w-full h-full absolute top-0 left-0 m-0 overflow-hidden z-0">
+  <li
+    *ngFor="let square of squares"
+    class="bg-black-alpha-10 absolute block border-round-xs list-none"
+  ></li>
+</ul>

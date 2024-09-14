@@ -1,5 +1,9 @@
-@media screen and (max-width: 960px) {
-  .p-menubar {
+.p-menubar {
+  .p-menuitem > .p-menuitem-content .p-menuitem-link {
+    color: var(--bg-menu-text);
+  }
+
+  @media screen and (max-width: 960px) {
     > .p-menubar-button {
       order: 2;
       margin-left: auto;
@@ -11,4 +15,8 @@
       margin-right: auto;
     }
   }
+}
+
+.p-togglebutton.p-button.p-highlight {
+  background: var(--primary-text-color);
 }
