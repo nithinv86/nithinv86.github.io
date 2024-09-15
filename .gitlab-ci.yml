@@ -25,25 +25,13 @@ build:
 deploy:
   stage: deploy
   before_script:
-    - echo "Before script 1"
-    - apk add --no-cache openssh-client sshpass bind-tools busybox-extras iputils
-    - echo "Before script 2"
+    - apk add --no-cache openssh-client
     - mkdir -p ~/.ssh
-    - echo "Before script 3"
     - chmod 700 ~/.ssh
-    - echo "Before script 4"
-    - ping -c 4 $SSH_HOST # Check if the host is reachable
-    - echo "Before script 5"
-    - nslookup $SSH_HOST # Check if the domain resolves correctly
-    - echo "Before script 6"
-    - telnet $SSH_HOST 22 # Test if the SSH port (22) is open and reachable
-    - echo "Before script 7"
-    # - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
-    # - ssh-keyscan -v $SSH_HOST >> ~/.ssh/known_hosts # Increase verbosity
     - echo "$SSH_HOST ssh-rsa $SSH_PUB" >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
   script:
     - echo "Deploying files to server..."
-    - scp -r dist/* $SSH_USER@$SSH_HOST:/var/www/http
+    - scp -v -r dist/* $SSH_USER@$SSH_HOST:/var/www/http
   only:
     - master
