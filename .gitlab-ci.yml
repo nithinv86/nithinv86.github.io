@@ -1,14 +1,15 @@
-image: node:18.19.1-alpine3.19
+# image: node:18.19.1-alpine3.19
 
 stages:
   - build
-  - deploy
+#  - deploy
 
 cache:
   paths:
     - node_modules/
 
 before_script:
+  - PING -c 4 nithinglobal.in
   - npm install -g @angular/cli
 
 build:
