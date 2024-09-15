@@ -38,7 +38,7 @@ deploy:
     - echo "Starting ssh-agent..."
     - eval $(ssh-agent -s)
     - echo "Adding SSH private key..."
-    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - echo "$SSH_PASSWORD" | tr -d '\r' | ssh-add -
     - echo "Setting up SSH directory..."
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
