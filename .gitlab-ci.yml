@@ -35,18 +35,14 @@ deploy:
   # script:
   #   - scp -r dist/* $SSH_USER@$SSH_HOST:/path/to/your/webserver
   before_script:
+    - ping -c 4 $SSH_HOST
     - 'apk add --update openssh'
     - eval $(ssh-agent -s)
-    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - echo "$SSH_PASSWD" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
-    - echo "Connecting to host: $SSH_HOST"
-    - ssh-keyscan -H $SSH_HOST >> ~/.ssh/known_hosts
-    # - ssh-keyscan -T 10 $SSH_HOST >> ~/.ssh/known_hosts
-    - echo "Testing SSH Host reachability..."
-    - ping -c 4 $SSH_HOST
+    - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
-    - echo "SSH setup completed."
   script:
     - echo "Deploying files to server..."
     - scp -r dist/* $SSH_USER@$SSH_HOST:/var/www/http
