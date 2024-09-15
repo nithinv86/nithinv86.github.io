@@ -32,6 +32,12 @@ deploy:
     - echo "Before script 3"
     - chmod 700 ~/.ssh
     - echo "Before script 4"
+    - apk add --no-cache iputils # for ping command
+    - echo "Before script 5"
+    - ping -c 4 $SSH_HOST # Check if the host is reachable
+    - echo "Before script 6"
+    - telnet $SSH_HOST 22 # Test if the SSH port (22) is open and reachable
+    - echo "Before script 7"
     - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
   script:
     - echo "Deploying files to server..."
