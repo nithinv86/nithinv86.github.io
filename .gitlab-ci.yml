@@ -25,14 +25,14 @@ build:
 deploy:
   stage: deploy
   before_script:
-    - ping -c 4 $SSH_HOST
-    - 'apk add --update openssh'
-    - eval $(ssh-agent -s)
-    - echo "$SSH_PASSWD" | tr -d '\r' | ssh-add -
+    - echo "Before script 1"
+    - apk add --no-cache openssh-client sshpass
+    - echo "Before script 2"
     - mkdir -p ~/.ssh
+    - echo "Before script 3"
     - chmod 700 ~/.ssh
+    - echo "Before script 4"
     - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
-    - chmod 644 ~/.ssh/known_hosts
   script:
     - echo "Deploying files to server..."
     - scp -r dist/* $SSH_USER@$SSH_HOST:/var/www/http
