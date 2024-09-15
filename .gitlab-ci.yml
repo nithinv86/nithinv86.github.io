@@ -19,8 +19,8 @@ build:
   artifacts:
     paths:
       - dist/
-  tags:
-    - cloud
+  only:
+    - master
 
 deploy:
   stage: deploy
@@ -46,5 +46,5 @@ deploy:
   script:
     - echo "Deploying files to server..."
     - scp -r dist/* $SSH_USER@$SSH_HOST:/var/www/http
-  tags:
-    - cloud
+  only:
+    - master
