@@ -1,8 +1,8 @@
-# image: node:18.19.1-alpine3.19
+image: node:18.19.1-alpine3.19
 
 stages:
   - build
-#  - deploy
+  - deploy
 
 cache:
   paths:
@@ -25,16 +25,6 @@ build:
 
 deploy:
   stage: deploy
-  # before_script:
-  #   # Install openssh-client in alpine
-  #   - apk add --no-cache openssh-client
-  #   - eval $(ssh-agent -s)
-  #   - echo "$SSH_PASSWORD" | tr -d '\r' | ssh-add -
-  #   - mkdir -p ~/.ssh
-  #   - chmod 700 ~/.ssh
-  #   - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
-  # script:
-  #   - scp -r dist/* $SSH_USER@$SSH_HOST:/path/to/your/webserver
   before_script:
     - ping -c 4 $SSH_HOST
     - 'apk add --update openssh'
