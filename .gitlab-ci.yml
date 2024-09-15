@@ -32,6 +32,6 @@ deploy:
     - chmod 644 ~/.ssh/known_hosts
   script:
     - echo "Deploying files to server..."
-    - scp -v -r dist/* $SSH_USER@$SSH_HOST:/var/www/http
+    - scp -v -r dist/* $SSH_USER@$SSH_HOST:/home/nithin/www/html
   only:
     - master
