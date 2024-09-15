@@ -35,23 +35,16 @@ deploy:
   # script:
   #   - scp -r dist/* $SSH_USER@$SSH_HOST:/path/to/your/webserver
   before_script:
-    - apt-get update -y && apt-get install -y openssh-client dnsutils netcat
-    - echo "Testing DNS resolution:"
-    - dig $SSH_HOST
-    - echo "Pinging the SSH host:"
+    - 'apk add --update openssh'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo "Connecting to host: $SSH_HOST"
+    - ssh-keyscan -H $SSH_HOST >> ~/.ssh/known_hosts
+    # - ssh-keyscan -T 10 $SSH_HOST >> ~/.ssh/known_hosts
+    - echo "Testing SSH Host reachability..."
     - ping -c 4 $SSH_HOST
-    - echo "Testing SSH port 22 connectivity:"
-    - nc -zv $SSH_HOST 22
-    # - 'apk add --update openssh'
-    # - eval $(ssh-agent -s)
-    # - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
-    # - mkdir -p ~/.ssh
-    # - chmod 700 ~/.ssh
-    # - echo "Connecting to host: $SSH_HOST"
-    # - ssh-keyscan -H $SSH_HOST >> ~/.ssh/known_hosts
-    # # - ssh-keyscan -T 10 $SSH_HOST >> ~/.ssh/known_hosts
-    # - echo "Testing SSH Host reachability..."
-    # - ping -c 4 $SSH_HOST
     - chmod 644 ~/.ssh/known_hosts
     - echo "SSH setup completed."
   script:
