@@ -38,7 +38,8 @@ deploy:
     - echo "Before script 6"
     - telnet $SSH_HOST 22 # Test if the SSH port (22) is open and reachable
     - echo "Before script 7"
-    - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
+    # - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
+    - ssh-keyscan -v $SSH_HOST >> ~/.ssh/known_hosts # Increase verbosity
   script:
     - echo "Deploying files to server..."
     - scp -r dist/* $SSH_USER@$SSH_HOST:/var/www/http
