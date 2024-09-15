@@ -1,7 +1,7 @@
 image: node:18.19.1-alpine3.19
 
 stages:
-  - build
+  # - build
   - deploy
 
 cache:
@@ -40,9 +40,9 @@ deploy:
     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
+    - ssh-keyscan -T 10 $SSH_HOST >> ~/.ssh/known_hosts
     - echo "Testing SSH Host reachability..."
     - ping -c 4 $SSH_HOST
-    - ssh-keyscan -T 10 $SSH_HOST >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
     - echo "SSH setup completed."
   script:
