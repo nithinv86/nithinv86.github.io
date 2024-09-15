@@ -26,19 +26,17 @@ deploy:
   stage: deploy
   before_script:
     - echo "Before script 1"
-    - apk add --no-cache openssh-client sshpass
+    - apk add --no-cache openssh-client sshpass bind-tools busybox-extras iputils
     - echo "Before script 2"
     - mkdir -p ~/.ssh
     - echo "Before script 3"
     - chmod 700 ~/.ssh
     - echo "Before script 4"
-    - apk add --no-cache bind-tools # for nslookup command
-    # - apk add --no-cache iputils # for ping command
-    - echo "Before script 5"
     - ping -c 4 $SSH_HOST # Check if the host is reachable
-    - echo "Before script 6"
+    - echo "Before script 5"
     - nslookup $SSH_HOST # Check if the domain resolves correctly
-    # - telnet $SSH_HOST 22 # Test if the SSH port (22) is open and reachable
+    - echo "Before script 6"
+    - telnet $SSH_HOST 22 # Test if the SSH port (22) is open and reachable
     - echo "Before script 7"
     - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
   script:
