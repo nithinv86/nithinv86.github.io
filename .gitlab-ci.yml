@@ -19,6 +19,8 @@ build:
   artifacts:
     paths:
       - dist/
+  only:
+    - master
 
 deploy:
   stage: deploy
@@ -33,18 +35,13 @@ deploy:
   # script:
   #   - scp -r dist/* $SSH_USER@$SSH_HOST:/path/to/your/webserver
   before_script:
-    - echo "Installing openssh-client..."
-    - apk add --no-cache openssh-client
-    - echo "Starting ssh-agent..."
+    - 'apk add --update openssh'
     - eval $(ssh-agent -s)
-    - echo "Adding SSH private key..."
-    - echo "$SSH_PASSWORD" | tr -d '\r' | ssh-add -
-    - echo "Setting up SSH directory..."
+    - echo "$SSH_PASSWD" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
-    - echo "Scanning SSH host and adding to known_hosts..."
-    - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
-    - cat ~/.ssh/known_hosts # Output the known_hosts file to see if the keyscan worked
+    - ssh-keyscan $MAC_MACHINE_IP >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
     - echo "SSH setup completed."
   script:
     - echo "Deploying files to server..."
