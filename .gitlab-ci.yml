@@ -37,7 +37,7 @@ deploy:
   before_script:
     - 'apk add --update openssh'
     - eval $(ssh-agent -s)
-    - echo "$SSH_PASSWD" | tr -d '\r' | ssh-add -
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
     - echo "Testing SSH Host reachability..."
