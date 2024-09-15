@@ -22,15 +22,32 @@ build:
 
 deploy:
   stage: deploy
+  # before_script:
+  #   # Install openssh-client in alpine
+  #   - apk add --no-cache openssh-client
+  #   - eval $(ssh-agent -s)
+  #   - echo "$SSH_PASSWORD" | tr -d '\r' | ssh-add -
+  #   - mkdir -p ~/.ssh
+  #   - chmod 700 ~/.ssh
+  #   - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
+  # script:
+  #   - scp -r dist/* $SSH_USER@$SSH_HOST:/path/to/your/webserver
   before_script:
-    # Install openssh-client in alpine
+    - echo "Installing openssh-client..."
     - apk add --no-cache openssh-client
+    - echo "Starting ssh-agent..."
     - eval $(ssh-agent -s)
-    - echo "$SSH_PASSWORD" | tr -d '\r' | ssh-add -
+    - echo "Adding SSH private key..."
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - echo "Setting up SSH directory..."
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
+    - echo "Scanning SSH host and adding to known_hosts..."
     - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
+    - cat ~/.ssh/known_hosts # Output the known_hosts file to see if the keyscan worked
+    - echo "SSH setup completed."
   script:
-    - scp -r dist/* $SSH_USER@$SSH_HOST:/path/to/your/webserver
+    - echo "Deploying files to server..."
+    - scp -r dist/* $SSH_USER@$SSH_HOST:/var/www/http
   only:
     - master

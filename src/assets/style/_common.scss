@@ -47,6 +47,10 @@ body {
   color: var(--bg-menu-text) !important;
 }
 
-.text-menu-30 {
-  color: rgba(var(--bg-menu-text-rgb), 0.3) !important;
+.text-menu-80 {
+  color: rgba(var(--bg-menu-text-rgb), 0.8) !important;
+}
+
+.banner {
+  transform: translate(-50%, -50%);
 }
