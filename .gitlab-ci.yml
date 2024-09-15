@@ -40,10 +40,8 @@ deploy:
     - echo "Before script 7"
     # - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
     # - ssh-keyscan -v $SSH_HOST >> ~/.ssh/known_hosts # Increase verbosity
-    - touch ~/.ssh/known_hosts
-    - chmod 644 ~/.ssh/known_hosts # Ensure proper permissions for the known_hosts file
-    - echo "Scanning SSH host..."
-    - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
+    - echo "$SSH_HOST ssh-rsa $SSH_PUB" >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
   script:
     - echo "Deploying files to server..."
     - scp -r dist/* $SSH_USER@$SSH_HOST:/var/www/http
