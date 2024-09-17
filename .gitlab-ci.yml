@@ -28,8 +28,8 @@ deploy:
     - apk add --no-cache openssh-client
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
-    - echo "$SSH_HOST ssh-rsa $SSH_PUB" >> ~/.ssh/known_hosts
-    - chmod 644 ~/.ssh/known_hosts
+    - echo "$SSH_HOST ssh-rsa $SSH_PUB" >> /home/$SSH_USER/.ssh/known_hosts
+    - chmod 644 /home/$SSH_USER/.ssh/known_hosts
   script:
     - echo "Deploying files to server..."
     - scp -v -r dist/* $SSH_USER@$SSH_HOST:/var/www/html
