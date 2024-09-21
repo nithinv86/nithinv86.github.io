@@ -28,10 +28,11 @@ deploy:
     - apk add --no-cache openssh-client
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
-    - echo "$SSH_HOST ssh-rsa $SSH_PUB" >> /home/$SSH_USER/.ssh/known_hosts
+    - echo "$SSH_HOST ssh-rsa $SSH_PASS" >> /home/$SSH_USER/.ssh/known_hosts
     - chmod 644 /home/$SSH_USER/.ssh/known_hosts
   script:
     - echo "Deploying files to server..."
+    - sshpass -p "$SSH_PASS" ssh -o StrictHostKeyChecking=no # $SSH_USER@$SSH_HOST "mkdir -p /var/www/html"
     - scp -v -r dist/* $SSH_USER@$SSH_HOST:/var/www/html
   only:
     - master
