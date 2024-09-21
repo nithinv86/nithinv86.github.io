@@ -24,15 +24,16 @@ build:
 
 deploy:
   stage: deploy
-  # before_script:
-  #   - apk add --no-cache openssh-client
-  #   - mkdir -p ~/.ssh
-  #   - chmod 700 ~/.ssh
-  #   - echo "$SSH_HOST ssh-rsa $SSH_PASS" >> /home/$SSH_USER/.ssh/known_hosts
-  #   - chmod 644 /home/$SSH_USER/.ssh/known_hosts
+  before_script:
+    - 'apk add --update openssh'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PASS" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
   script:
-    - echo "Deploying files to server..."
-    - sshpass -p "$SSH_PASS" ssh -o StrictHostKeyChecking=no # $SSH_USER@$SSH_HOST "mkdir -p /var/www/html"
-    - scp -v -r dist/* $SSH_USER@$SSH_HOST:/var/www/html
+    - echo "Deploying"
+    - scp mobile.tar.gz $SSH_USER@$SSH_HOST:/home/$SSH_USER/
   only:
     - master
