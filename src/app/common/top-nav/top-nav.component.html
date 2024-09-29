@@ -1,6 +1,6 @@
 <p-menubar
   [model]="mainNavigation"
-  styleClass="bg-white-alpha-10 border-none border-noround py-1 px-3 transition-ease-in-out"
+  styleClass="border-none border-noround py-1 px-3 transition-ease-in-out"
 >
   <ng-template pTemplate="start">
     <a href="/" class="w-3rem h-3rem flex">
@@ -24,12 +24,23 @@
     </a>
   </ng-template>
   <ng-template pTemplate="end">
-    <div class="flex align-items-center gap-3">
+    <div class="flex align-items-center gap-2">
       <a
         *ngFor="let sn of socialNetworks"
         [href]="sn.url"
         target="_blank"
-        class="text-menu px-2 hover:text-primary"
+        class="
+          flex
+          align-items-center
+          text-white
+          justify-content-center
+          w-2rem
+          h-2rem
+          border-circle
+          no-underline
+          hover:bg-white hover:text-primary
+          cursor-pointer
+        "
         [pTooltip]="sn.label"
         tooltipPosition="left"
       >

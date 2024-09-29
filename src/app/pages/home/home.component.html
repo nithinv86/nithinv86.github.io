@@ -1,4 +1,4 @@
-<div class="w-full h-full grid absolute z-1">
+<!-- <div class="w-full h-full grid absolute z-1">
   <div class="col-12 md:col-6 h-full flex align-items-center justify-content-center">
     <div class="grid w-full max-w-20rem md:max-w-24rem gap-4">
       <span class="w-auto bg-primary px-3 py-2 border-round-xs">Full-stack Developer</span>
@@ -57,11 +57,27 @@
       </div>
     </div>
   </div>
+</div> -->
+<div class="home-wrapper w-full h-full flex absolute z-1">
+  <div class="main-content h-full flex flex-column align-items-start justify-content-center gap-3">
+    <div class="text-xl font-semibold text-gray-700">Hello, I'm a</div>
+    <div class="text-7xl font-semibold">Full Stack <span class="text-primary">Developer</span></div>
+    <div class="w-6">
+      Hi, I'm Nithin V, a passionate Full Stack Developer based in Kerala, India. Welcome to my
+      portfolio
+    </div>
+    <p-button
+      label="View Protfolio"
+      styleClass="bg-primary hover:bg-primary-800"
+      icon="fa-solid fa-arrow-right-long"
+      iconPos="right"
+    ></p-button>
+  </div>
 </div>
 
 <ul class="bg-bubbles w-full h-full absolute top-0 left-0 m-0 overflow-hidden z-0">
   <li
     *ngFor="let square of squares"
-    class="bg-black-alpha-10 absolute block border-round-xs list-none"
+    class="bg-primary opacity-10 absolute block border-round-xs list-none"
   ></li>
 </ul>

@@ -3,12 +3,40 @@
 }
 
 .p-menubar {
+  background: transparent !important;
+
   p-menubarsub {
     margin-left: auto;
   }
 
-  .p-menuitem > .p-menuitem-content .p-menuitem-link {
-    color: var(--bg-menu-text);
+  .p-menuitem,
+  .p-menuitem:focus {
+    > .p-menuitem-content {
+      background: transparent !important;
+
+      .p-menuitem-link {
+        color: var(--bg-menu-text);
+        font-size: 14px;
+        font-weight: 500;
+
+        &:hover {
+          background: var(--primary-text-color) !important;
+          color: transparent;
+        }
+      }
+    }
+  }
+
+  .p-menubar-end > div > a {
+    /* width: 30px;
+    height: 30px;
+    color: var(--bg-primary-text);
+    display: flex;
+
+    &:hover {
+      background: var(--primary-text-color);
+      color: var(--primary-color);
+    } */
   }
 
   @media screen and (max-width: 960px) {
@@ -19,6 +47,7 @@
 
     > .p-menubar-custom,
     > .p-menubar-end {
+      color: var(--primary-text-color);
       display: flex;
       margin-right: auto;
     }

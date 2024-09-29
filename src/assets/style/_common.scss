@@ -11,24 +11,24 @@ body {
     > * {
       color: var(--bg-menu-text);
       display: flex;
-      height: calc(100vh - var(--nav-height));
+      height: 100vh;
       position: relative;
 
-      &:nth-child(odd) {
+      /* &:nth-child(odd) {
         background: var(--bg-color);
       }
 
       &:nth-child(even) {
         background: var(--bg-color2);
-      }
+      } */
 
-      &:first-child {
+      /* &:first-child {
         background: linear-gradient(
           45deg,
           rgba(var(--primary-rgb-color), 0) 35%,
           rgba(var(--primary-rgb-color), 0.5) 100%
         );
-      }
+      } */
     }
   }
 
@@ -42,7 +42,7 @@ body {
 }
 
 .text-menu {
-  color: var(--bg-menu-text) !important;
+  color: var(--bg-primary-text) !important;
 }
 
 .text-menu-80 {

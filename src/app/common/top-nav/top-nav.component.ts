@@ -8,7 +8,7 @@ import { MenuItem } from 'primeng/api';
 })
 export class TopNavComponent implements OnInit {
   public mainNavigation: MenuItem[];
-  public darkMode = true;
+  public darkMode = false;
   public socialNetworks = [
     {
       label: 'Email',
