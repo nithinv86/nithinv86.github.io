@@ -20,6 +20,7 @@ build:
       - dist/
   only:
     - master
+#
 # deploy:
 #   stage: deploy
 #   before_script:
