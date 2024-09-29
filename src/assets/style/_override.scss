@@ -3,6 +3,10 @@
 }
 
 .p-menubar {
+  p-menubarsub {
+    margin-left: auto;
+  }
+
   .p-menuitem > .p-menuitem-content .p-menuitem-link {
     color: var(--bg-menu-text);
   }

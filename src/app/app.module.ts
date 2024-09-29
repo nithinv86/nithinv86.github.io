@@ -9,7 +9,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SummaryComponent } from './pages/summary/summary.component';
-import { TopNavComponent } from './pages/top-nav/top-nav.component';
+import { TopNavComponent } from './common/top-nav/top-nav.component';
 import { AboutComponent } from './pages/about/about.component';
 
 @NgModule({

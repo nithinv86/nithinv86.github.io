@@ -17,7 +17,7 @@ export class TopNavComponent implements OnInit {
     },
     {
       label: 'LinkedIn',
-      icon: 'fa-brands fa-linkedin',
+      icon: 'fa-brands fa-linkedin-in',
       url: 'https://www.linkedin.com/in/nithinvuideveloper',
     },
     { label: 'Twitter', icon: 'fa-brands fa-x-twitter', url: 'https://x.com/Nithin_V86' },
@@ -37,9 +37,11 @@ export class TopNavComponent implements OnInit {
   ngOnInit() {
     this.mainNavigation = [
       { label: 'Home' },
-      { label: 'Resume' },
+      { label: 'About me' },
+      { label: 'Services' },
       { label: 'Portfolio' },
-      { label: 'Contact' },
+      { label: 'Resume' },
+      { label: 'Contact me' },
     ];
   }
 

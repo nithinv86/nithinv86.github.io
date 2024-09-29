@@ -7,8 +7,6 @@ body {
 
   .content-wrapper {
     min-height: 100vh;
-    padding-top: var(--nav-height) !important;
-    padding-bottom: var(--nav-height) !important;
 
     > * {
       color: var(--bg-menu-text);
