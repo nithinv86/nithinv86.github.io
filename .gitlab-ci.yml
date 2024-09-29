@@ -2,7 +2,6 @@ image: node:18.19.1-alpine3.19
 
 stages:
   - build
-  - deploy
 
 cache:
   paths:
@@ -21,19 +20,18 @@ build:
       - dist/
   only:
     - master
-
-deploy:
-  stage: deploy
-  before_script:
-    - 'apk add --update openssh'
-    - eval $(ssh-agent -s)
-    - echo "$SSH_PASS" | tr -d '\r' | ssh-add -
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh
-    - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
-    - chmod 644 ~/.ssh/known_hosts
-  script:
-    - echo "Deploying"
-    - scp mobile.tar.gz $SSH_USER@$SSH_HOST:/home/$SSH_USER/
-  only:
-    - master
+# deploy:
+#   stage: deploy
+#   before_script:
+#     - 'apk add --update openssh'
+#     - eval $(ssh-agent -s)
+#     - echo "$SSH_PASS" | tr -d '\r' | ssh-add -
+#     - mkdir -p ~/.ssh
+#     - chmod 700 ~/.ssh
+#     - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
+#     - chmod 644 ~/.ssh/known_hosts
+#   script:
+#     - echo "Deploying"
+#     - scp mobile.tar.gz $SSH_USER@$SSH_HOST:/home/$SSH_USER/
+#   only:
+#     - master
