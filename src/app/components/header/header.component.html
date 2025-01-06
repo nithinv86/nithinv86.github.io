@@ -1,9 +1,61 @@
-<div class="flex flex-column w-full text-white-alpha-80">
+<header class="flex flex-column w-full h-full text-white-alpha-80 align-items-start">
   <h1 class="text-4xl font-normal md:text-6xl lg:text-7xl m-0 mb-2">Nithin V</h1>
-  <h2 class="text-3xl font-light md:text-4xl m-0 mb-2">Full Stack Developer</h2>
-  <p class="line-height-3">
+  <h2 class="text-3xl font-medium m-0 mb-2">Full Stack Developer</h2>
+  <p class="line-height-3 text-white-alpha-70">
     I'm a Full Stack Developer passionate about building scalable web applications and dynamic user
     experiences. I specialize in front-end frameworks like Angular and React, and back-end
     technologies like Node.js, NestJS, and MongoDB. Explore my projects, skills, and experience!
   </p>
-</div>
+
+  <p-menu
+    #menu
+    [model]="items"
+    class="hidden md:flex justify-center mt-6"
+    styleClass="w-full md:w-60"
+  ></p-menu>
+
+  <div class="flex mt-auto mb-4">
+    <p-button
+      icon="fa-brands fa-github"
+      severity="secondary"
+      pTooltip="GitHub"
+      tooltipPosition="top"
+      [rounded]="true"
+      [text]="true"
+    ></p-button>
+    <p-button
+      icon="fa-brands fa-stack-overflow"
+      severity="secondary"
+      pTooltip="Stack Overflow"
+      tooltipPosition="top"
+      [rounded]="true"
+      [text]="true"
+    ></p-button>
+
+    <!-- https://stackoverflow.com/users/8904502/nithin-v -->
+    <p-button
+      icon="fa-brands fa-linkedin-in"
+      severity="secondary"
+      pTooltip="LinkedIn"
+      tooltipPosition="top"
+      [rounded]="true"
+      [text]="true"
+    ></p-button>
+    <p-button
+      icon="fa-brands fa-x-twitter"
+      severity="secondary"
+      pTooltip="X Twitter"
+      tooltipPosition="top"
+      [rounded]="true"
+      [text]="true"
+    ></p-button>
+    <p-button
+      icon="fa-brands fa-facebook"
+      severity="secondary"
+      pTooltip="Facebook"
+      tooltipPosition="top"
+      [rounded]="true"
+      [text]="true"
+    ></p-button>
+  </div>
+</header>

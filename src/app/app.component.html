@@ -1,7 +1,11 @@
 <!-- <router-outlet></router-outlet> -->
 <div class="main w-full h-full flex justify-content-center">
-  <div class="content grid w-full h-full p-4">
-    <div class="col-12 md:col-6 lg:col-4 h-auto md:h-full"><app-header></app-header></div>
-    <div class="col-12 md:col-6 lg:col-8"><app-details></app-details></div>
+  <div class="content flex flex-wrap w-full h-full p-4 relative">
+    <div class="col-12 md:col-4 lg:col-3 h-29rem md:h-full relative md:fixed">
+      <app-header></app-header>
+    </div>
+    <div class="col-12 md:col-6 lg:col-7 h-auto md:h-full m-0 ml-auto">
+      <app-details></app-details>
+    </div>
   </div>
 </div>

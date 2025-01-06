@@ -1,0 +1,43 @@
+@mixin nav-hover() {
+  background: transparent;
+  color: var(--p-text-color);
+
+  .p-menu-item-icon {
+    width: 2.5rem;
+    background: var(--p-text-color);
+  }
+}
+
+p {
+  margin: 0;
+}
+
+::ng-deep {
+  header .p-menu {
+    background: transparent;
+    border: none;
+
+    .p-menu-item:not(.p-disabled) {
+      .p-menu-item-content {
+        color: var(--p-text-muted-color);
+
+        .p-menu-item-icon {
+          width: 1.5rem;
+          height: 2px;
+          background: var(--p-text-muted-color);
+          border-radius: 1px;
+        }
+
+        &:hover {
+          @include nav-hover();
+        }
+      }
+
+      &.p-focus {
+        .p-menu-item-content {
+          @include nav-hover();
+        }
+      }
+    }
+  }
+}
